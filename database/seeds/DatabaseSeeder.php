@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        require_once(__DIR__ . '/BreedsTableSeeder.php');
+        $this->call('BreedsTableSeeder');
     }
 }
