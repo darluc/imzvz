@@ -155,6 +155,7 @@ return [
         Furbook\Providers\AuthServiceProvider::class,
         Furbook\Providers\EventServiceProvider::class,
         Furbook\Providers\RouteServiceProvider::class,
+        Furbook\Providers\WechatServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class
     ],
@@ -203,7 +204,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-        'HTML' => Collective\Html\HtmlFacade::class
+        'HTML' => Collective\Html\HtmlFacade::class,
+        'Wechat' => Furbook\Facades\WechatServerFacade::class
 
     ],
 
