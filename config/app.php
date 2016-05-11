@@ -156,6 +156,7 @@ return [
         Furbook\Providers\EventServiceProvider::class,
         Furbook\Providers\RouteServiceProvider::class,
         Furbook\Providers\WechatServiceProvider::class,
+        Furbook\Providers\TranslateServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class
     ],
