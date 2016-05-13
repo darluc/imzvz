@@ -2,9 +2,7 @@
 
 namespace Furbook\Http\Controllers;
 
-use EasyWeChat\Message\Text;
 use EasyWeChat\Server\Guard;
-use Furbook\Services\GoogleTranslateEngine;
 use Furbook\Services\TranslateService;
 use Illuminate\Http\Request;
 
@@ -29,7 +27,11 @@ class WechatController extends Controller
                     if(preg_match("/[\\x{4e00}-\\x{9fa5}]/u",$content)){
                         $tr->setTarget('en');
                     }
-                    return $tr->translate($content);
+                    try {
+                        return $tr->translate($content);
+                    }catch (\Exception $ex){
+                        return 'Sorry, something goes wrong. Please wait a moment.';
+                    }
                 } else {
                     return "您好！欢迎关注我!";
                 }
