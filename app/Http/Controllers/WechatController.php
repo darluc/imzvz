@@ -20,7 +20,7 @@ class WechatController extends Controller
         if (!$request->isMethod('get')) {
             // only add message handler when the request is not using a get method
             $server->setMessageHandler(function ($message) {
-                if ($message->type == 'text') {
+                if ($message->MsgType == 'text') {
                     // do the translation
                     /** @var TranslateService $tr */
                     $tr = app('Furbook\\Services\\TranslateService');
