@@ -4,7 +4,7 @@ namespace Furbook\Http\Controllers;
 
 use EasyWeChat\Message\Text;
 use EasyWeChat\Server\Guard;
-use Furbook\Services\GoogleTranslation;
+use Furbook\Services\GoogleTranslateEngine;
 use Furbook\Services\TranslateService;
 use Illuminate\Http\Request;
 
@@ -23,7 +23,7 @@ class WechatController extends Controller
                 if ($message->MsgType == 'text') {
                     // do the translation
                     /** @var TranslateService $tr */
-                    $tr = app('Furbook\\Services\\TranslateService');
+                    $tr = app('translateEngine');
                     $content = $message->content;
                     // if it is Chinese, set target language to English
                     if(preg_match("/[\\x{4e00}-\\x{9fa5}]/u",$content)){

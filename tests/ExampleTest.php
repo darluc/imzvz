@@ -25,16 +25,20 @@ class ExampleTest extends TestCase
 //        $this->call('GET', '/cats/create');
 //        $this->assertResponseOk();
 //    }
-    public function testFoo(){
+    public function testFoo()
+    {
         $str = 'cat';
         $result = 'cat';
         $this->assertSame($result, $str);
     }
-    
-    public function testGoogleTraslate(){
-        $tr = new \Furbook\Services\GoogleTranslation();
-        $result = $tr->setTarget('zh-CN')->translate('me');
-        $this->assertEquals('我', $result);
+
+    public function testGoogleTraslate()
+    {
+        $tr = app('translateEngine');
+        $this->assertInstanceOf(Furbook\Services\GoogleTranslateEngine::class, $tr);
+//        $tr = new \Furbook\Services\GoogleTranslation();
+//        $result = $tr->setTarget('zh-CN')->translate('me');
+//        $this->assertEquals('我', $result);
     }
 
 }

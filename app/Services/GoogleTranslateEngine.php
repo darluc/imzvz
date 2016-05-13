@@ -11,7 +11,7 @@ namespace Furbook\Services;
 use Furbook\Services\TranslateService;
 use Stichoza\GoogleTranslate\TranslateClient;
 
-class GoogleTranslation implements TranslateService
+class GoogleTranslateEngine implements TranslateService
 {
     protected $content;
     /** @var TranslateClient */
@@ -47,7 +47,7 @@ class GoogleTranslation implements TranslateService
     /**
      * Set the content that will be translated.
      * @param $content
-     * @return GoogleTranslation
+     * @return GoogleTranslateEngine
      */
     public function setContent($content)
     {
@@ -58,7 +58,7 @@ class GoogleTranslation implements TranslateService
     /**
      * Set the target language. If target is empty, it means auto-detect language.
      * @param null $target
-     * @return GoogleTranslation
+     * @return GoogleTranslateEngine
      */
     public function setTarget($target = null)
     {
@@ -69,7 +69,7 @@ class GoogleTranslation implements TranslateService
     /**
      * Set the source language. If target is empty, it means auto-detect language.
      * @param null $source
-     * @return GoogleTranslation
+     * @return GoogleTranslateEngine
      */
     public function setSource($source = null)
     {
