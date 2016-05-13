@@ -24,7 +24,7 @@ class WechatController extends Controller
                     // do the translation
                     /** @var TranslateService $tr */
                     $tr = app('translateEngine');
-                    $content = $message->content;
+                    $content = $message->Content;
                     // if it is Chinese, set target language to English
                     if(preg_match("/[\\x{4e00}-\\x{9fa5}]/u",$content)){
                         $tr->setTarget('en');
