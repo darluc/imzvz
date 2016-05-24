@@ -34,13 +34,13 @@ class WechatController extends Controller
         return $server->serve();
     }
 
-    private function textMessage(Text $message)
+    private function textMessage($message)
     {
         $content = $message->Content;
         return $this->translateIt($content);
     }
 
-    private function voiceMessage(Voice $message)
+    private function voiceMessage($message)
     {
         if (!empty($message->Recognition)) {
             return $this->translateIt($message->Recognition);
