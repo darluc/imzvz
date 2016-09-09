@@ -2,6 +2,7 @@
 
 namespace Furbook\Http\Controllers;
 
+use Log;
 use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Voice;
 use EasyWeChat\Server\Guard;
@@ -60,6 +61,7 @@ class WechatController extends Controller
         try {
             return $tr->translate($content);
         } catch (\Exception $ex) {
+            Log::warning('Translate from google failed', [$content, $ex]);
             return 'Sorry, something goes wrong. Please wait a moment.';
         }
     }
