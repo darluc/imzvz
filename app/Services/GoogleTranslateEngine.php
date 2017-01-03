@@ -41,7 +41,9 @@ class GoogleTranslateEngine implements TranslateService
         if (!empty($content)) {
             $this->setContent($content);
         }
-        return $this->googleTranslate();
+        $ret = $this->googleTranslate();
+        \Log::debug('google translation result: ', [$ret]);
+        return $ret;
     }
 
     /**

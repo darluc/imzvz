@@ -14,6 +14,9 @@
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
+    if(env('APP_DEBUG')) { // debug 模式下打印 php 配置信息
+        phpinfo();
+    }
     return 'Server is running';
 });
 

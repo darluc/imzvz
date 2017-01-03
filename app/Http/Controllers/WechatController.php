@@ -19,15 +19,23 @@ class WechatController extends Controller
         $server = app('wechat')->server;
 
         if (!$request->isMethod('get')) {
+            $sig = $request->input('signature');
             // only add message handler when the request is not using a get method
-            $server->setMessageHandler(function ($message) {
-                switch ($message->MsgType) {
-                    case 'text':
-                        return $this->textMessage($message);
-                    case 'voice':
-                        return $this->voiceMessage($message);
-                    default:
-                        return "更多功能, 敬请期待!!!";
+            $server->setMessageHandler(function ($message) use ($sig) {
+                // cause google translation costs much time and wechat server have three tries, cache the first
+                // translation response will help.
+                if($ret = \Cache::pull($sig)) {
+                    return $ret;
+                } else {
+                    $ret = "更多功能, 敬请期待!!!";
+                    switch ($message->MsgType) {
+                        case 'text':
+                            $ret = $this->textMessage($message);
+                        case 'voice':
+                            $ret = $this->voiceMessage($message);
+                    }
+                    \Cache::put($sig, $ret, 10);
+                    return $ret;
                 }
             });
         }
@@ -52,6 +60,7 @@ class WechatController extends Controller
 
     private function translateIt($content)
     {
+        \Log::debug('try to translate: ', [$content]);
         /** @var TranslateService $tr */
         $tr = app('translateEngine');
         // if it is Chinese, set target language to English
