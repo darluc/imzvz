@@ -25,14 +25,17 @@ class WechatController extends Controller
                 // cause google translation costs much time and wechat server have three tries, cache the first
                 // translation response will help.
                 if($ret = \Cache::pull($sig)) {
+                    \Log::debug('pull from cache [' . $sig . ']: ', [$ret]);
                     return $ret;
                 } else {
                     $ret = "更多功能, 敬请期待!!!";
                     switch ($message->MsgType) {
                         case 'text':
                             $ret = $this->textMessage($message);
+                            break;
                         case 'voice':
                             $ret = $this->voiceMessage($message);
+                            break;
                     }
                     \Cache::put($sig, $ret, 10);
                     return $ret;
