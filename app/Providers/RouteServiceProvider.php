@@ -1,6 +1,6 @@
 <?php
 
-namespace Furbook\Providers;
+namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Furbook\Http\Controllers';
+    protected $namespace = 'App\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -27,7 +27,6 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot($router);
-        $router->Model('cat', 'Furbook\Cat');
     }
 
     /**

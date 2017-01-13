@@ -5,7 +5,7 @@
  * Time: 14:10
  */
 use Illuminate\Database\Seeder;
-use Furbook\User;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {

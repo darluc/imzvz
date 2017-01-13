@@ -1,8 +1,8 @@
 <?php
 
-namespace Furbook\Providers;
+namespace App\Providers;
 
-use Furbook\Services\GoogleTranslateEngine;
+use App\Services\GoogleTranslateEngine;
 use Illuminate\Support\ServiceProvider;
 
 class TranslateServiceProvider extends ServiceProvider
@@ -24,13 +24,13 @@ class TranslateServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(['Furbook\\Services\\TranslateService' => 'translateEngine'], function ($app) {
+        $this->app->bind(['App\\Services\\TranslateService' => 'translateEngine'], function ($app) {
             return new GoogleTranslateEngine();
         });
     }
 
     public function provides()
     {
-        return ['translateEngine', 'Furbook\\Services\\GoogleTranslation'];
+        return ['translateEngine', 'App\\Services\\GoogleTranslation'];
     }
 }

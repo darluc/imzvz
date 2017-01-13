@@ -151,12 +151,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Furbook\Providers\AppServiceProvider::class,
-        Furbook\Providers\AuthServiceProvider::class,
-        Furbook\Providers\EventServiceProvider::class,
-        Furbook\Providers\RouteServiceProvider::class,
-        Furbook\Providers\WechatServiceProvider::class,
-        Furbook\Providers\TranslateServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+//        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        App\Providers\WechatServiceProvider::class,
+        App\Providers\TranslateServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class
     ],
@@ -206,7 +205,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
-        'Wechat' => Furbook\Facades\WechatServerFacade::class
+        'Wechat' => App\Facades\WechatServerFacade::class
 
     ],
 

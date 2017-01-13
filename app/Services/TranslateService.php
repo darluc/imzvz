@@ -5,7 +5,7 @@
  * Time: 09:40
  */
 
-namespace Furbook\Services;
+namespace App\Services;
 
 
 interface TranslateService

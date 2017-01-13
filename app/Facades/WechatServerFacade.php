@@ -5,7 +5,7 @@
  * Time: 17:18
  */
 
-namespace Furbook\Facades;
+namespace App\Facades;
 
 
 use Illuminate\Support\Facades\Facade;

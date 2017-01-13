@@ -1,6 +1,6 @@
 <?php
 
-namespace Furbook\Providers;
+namespace App\Providers;
 
 use EasyWeChat\Foundation\Application;
 use Illuminate\Support\ServiceProvider;

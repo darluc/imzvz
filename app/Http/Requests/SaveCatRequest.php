@@ -1,8 +1,8 @@
 <?php
 
-namespace Furbook\Http\Requests;
+namespace App\Http\Requests;
 
-use Furbook\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class SaveCatRequest extends Request
 {

@@ -1,15 +1,11 @@
 <?php
 
-namespace Furbook\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Log;
-use EasyWeChat\Message\Text;
-use EasyWeChat\Message\Voice;
 use EasyWeChat\Server\Guard;
-use Furbook\Services\TranslateService;
+use App\Services\TranslateService;
 use Illuminate\Http\Request;
 
-use Furbook\Http\Requests;
 
 class WechatController extends Controller
 {
@@ -24,7 +20,7 @@ class WechatController extends Controller
             $server->setMessageHandler(function ($message) use ($sig) {
                 // cause google translation costs much time and wechat server have three tries, cache the first
                 // translation response will help.
-                if($ret = \Cache::pull($sig)) {
+                if ($ret = \Cache::pull($sig)) {
                     \Log::debug('pull from cache [' . $sig . ']: ', [$ret]);
                     return $ret;
                 } else {
@@ -56,13 +52,14 @@ class WechatController extends Controller
     {
         if (!empty($message->Recognition)) {
             return $this->translateIt($message->Recognition);
-        }else{
+        } else {
             return 'ˋ(′o‵")ˊ';
         }
     }
 
     private function translateIt($content)
     {
+        if (env('APP_ENV') == 'local') return 'local translate debug: ' . $content;
         \Log::debug('try to translate: ', [$content]);
         /** @var TranslateService $tr */
         $tr = app('translateEngine');
@@ -73,7 +70,7 @@ class WechatController extends Controller
         try {
             return $tr->translate($content);
         } catch (\Exception $ex) {
-            Log::warning('Translate from google failed', [$content, $ex]);
+            \Log::warning('Translate from google failed', [$content, $ex]);
             return 'Sorry, something goes wrong. Please wait a moment.';
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Furbook\Events;
+namespace App\Events;
 
 abstract class Event
 {

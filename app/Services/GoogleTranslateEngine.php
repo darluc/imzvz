@@ -5,10 +5,10 @@
  * Time: 09:54
  */
 
-namespace Furbook\Services;
+namespace App\Services;
 
 
-use Furbook\Services\TranslateService;
+use App\Services\TranslateService;
 use Stichoza\GoogleTranslate\TranslateClient;
 
 class GoogleTranslateEngine implements TranslateService

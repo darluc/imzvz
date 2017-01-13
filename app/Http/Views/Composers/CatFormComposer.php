@@ -1,7 +1,7 @@
 <?php
-namespace Furbook\Http\Views\Composers;
+namespace App\Http\Views\Composers;
 
-use Furbook\Breed;
+use App\Breed;
 use Illuminate\Contracts\View\View;
 
 /**
