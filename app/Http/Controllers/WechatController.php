@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Js\Js;
 use EasyWeChat\Server\Guard;
 use App\Services\TranslateService;
 use Illuminate\Http\Request;
@@ -43,10 +44,12 @@ class WechatController extends Controller
     }
 
     // get wx.config parameters
-    public function jssdk()
+    public function jssdkSignature(Request $request)
     {
+        /** @var Js $js */
         $js = app('wechat')->js;
-        return $js->config();
+        header('Access-Control-Allow-Origin:*');
+        return $js->signature($request->headers->get('referer'));
     }
 
     private function textMessage($message)

@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::resource('weixin/connect', 'WechatController@connect');
 
 // ajax request for JSSDK params from log.zvz.im
-Route::get('blog/jssdk', 'WechatController@jssdk')->middleware('blog');
+Route::get('blog/jssdk', 'WechatController@jssdkSignature')->middleware('blog');
 
 Route::group(
     ['prefix' => 'console', 'namespace' => 'Console'],
