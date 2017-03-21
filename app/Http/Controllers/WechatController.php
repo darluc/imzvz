@@ -42,6 +42,13 @@ class WechatController extends Controller
         return $server->serve();
     }
 
+    // get wx.config parameters
+    public function jssdk()
+    {
+        $js = app('wechat')->js;
+        return $js->config();
+    }
+
     private function textMessage($message)
     {
         $content = $message->Content;
