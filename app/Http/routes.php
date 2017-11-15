@@ -17,9 +17,8 @@ Route::get('/', function () {
     if (env('APP_DEBUG')) { // debug 模式下打印 php 配置信息
         phpinfo();
     } else {
-        redirect('https://log.zvz.im', 301);
+        return redirect('https://log.zvz.im', 301);
     }
-    return;
 });
 
 Route::get('/status', function() {
